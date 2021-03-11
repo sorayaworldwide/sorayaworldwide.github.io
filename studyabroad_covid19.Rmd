@@ -84,7 +84,7 @@ For more details on the CDC's guidance for IHE in relation to international trav
 ## Tweets
 I pulled Twitter data using the rtweets package to match variations of the search terms 'study abroad and 'covid.' This pulled 329 tweets. A special shot out to Jennifer Houchins @[toosweetgeek](https://twitter.com/TooSweetGeek) who helped me with the syntax of my search terms. 
 
-```{r, echo=TRUE}
+```
 study_covid1 <-c("'study abroad' #covid OR covid",
                 "'study abroad' #covid19 OR covid19",
                 "#studyabroad #covid19 OR covid19",
@@ -101,7 +101,6 @@ study_covid1 <-c("'study abroad' #covid OR covid",
                 "#Study_Abroad #covid19 OR covid19", 
                 "#intled #covid19 OR covid19")
 ```
-
 
 ## Sentiment Lexicons 
 For the sentiment analysis, I used both Vader and NRC to compare if the sentiment was overall positive or negative in regards to study abroad and covid-19.   
@@ -140,22 +139,20 @@ The sentiment surrounding study abroad and covid using the Vader lexicon is over
   labs(x="Vader Sentiment Value", y="Vader Sentiment Score", title="Study Abroad and Covid Twitter Data")
 ```
 
-## Sample tweets by sentiment (positive)- Vader
+## Sample tweet by sentiment (positive)- Vader
 
 ```{r}
-tweet_embed("https://twitter.com/VISIT_Insurance/status/1367669706174455808?s=20")  
-tweet_embed("https://twitter.com/ThamesLanka/status/1367393179884871680?s=20")
+tweet_embed("https://twitter.com/VISIT_Insurance/status/1367669706174455808?s=20")
 ```
-## Sample tweets by sentiment (negative) - Vader
+## Sample tweet by sentiment (negative) - Vader
 ```{r}
-tweet_embed("https://twitter.com/bertholdts/status/1367483846044876807?s=20")  
-tweet_embed("https://twitter.com/raplineugh/status/1367768417848025088?s=20")
+tweet_embed("https://twitter.com/bertholdts/status/1367483846044876807?s=20")
 ```
 
 ## NRC Lexicon
 
 Results from the NRC Lexicon were very similar to those from Vader. 
-```{r, fig2, fig.height=3, fig.width=4}
+```{r, fig3, fig.height=3, fig.width=4}
 summary_nrc%>%
   spread(sentiment, n)%>%
   relocate(positive)%>%
