@@ -698,27 +698,22 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <p>Now it’s time to plot. I used the <a href="https://www.rdocumentation.org/packages/tidygraph/versions/1.2.0/topics/as_tbl_graph.data.frame"><code>as_tbl_graph()</code></a> function from <code>{tidygraph}</code> to make the dataframe into an object with nodes and edges for a social network graph.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>g<span class="ot">&lt;-</span><span class="fu">as_tbl_graph</span>(edgelist)</span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A tbl_graph: 22 nodes and 22 edges</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A directed multigraph with 9 components</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Node Data: 22 x 1 (active)</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  name           </span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>          </span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> ShawnVanderziel</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> EstherAtNAFSA  </span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> ThePIEReview   </span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> eduKUDU        </span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> toddleegoen    </span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span> NicoleLongstaff</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co"># ... with 16 more rows</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Edge Data: 22 x 2</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>   from    to</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>int<span class="sc">&gt;</span> <span class="er">&lt;</span>int<span class="sc">&gt;</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">1</span>     <span class="dv">2</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">1</span>    <span class="dv">15</span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>     <span class="dv">1</span>     <span class="dv">2</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co"># ... with 19 more rows</span></span></code></pre></div>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># A directed multigraph with 9 components</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Node Data: 22 x 1 (active)</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  name           </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>          </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> ShawnVanderziel</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> EstherAtNAFSA  </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> ThePIEReview   </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> eduKUDU        </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ... with 16 more rows</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Edge Data: 22 x 2</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>   from    to</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>int<span class="sc">&gt;</span> <span class="er">&lt;</span>int<span class="sc">&gt;</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>     <span class="dv">1</span>     <span class="dv">2</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>     <span class="dv">1</span>    <span class="dv">15</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>     <span class="dv">1</span>     <span class="dv">2</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co"># ... with 19 more rows</span></span></code></pre></div>
 </section>
 <section id="the-plot-thickens" class="slide level2">
 <h2>The Plot thickens</h2>
@@ -741,8 +736,8 @@ document.getElementsByTagName('head')[0].appendChild(style);
 </section>
 <section id="results" class="slide level2">
 <h2>Results</h2>
-<p>The plot shows a network with not a whole lot of connectivity. There are many dyad pairs represented here. Many of the actors are organizational accounts, and there is some interaction between organizations and individuals that are part of the organization. The actor <span class="citation" data-cites="NAFSA">@NAFSA</span>, which is the organizational account of the main professional organization for IE, is at the center of a group that includes its President, <span class="citation" data-cites="EstherAtNAFSA">@EstherAtNAFSA</span>, and users who are members.</p>
-<p>This analysis used the measure <code>centrality_authority</code> which purports to measure how influential an individual may be based on the interactions observed. It identified the user <span class="citation" data-cites="eddiepwest">@eddiepwest</span> has having a large measure of centrality, or importance. However, for this network, it seems like this measure is not as useful in this context.</p>
+<p>The plot shows a network with not a whole lot of connectivity. There are many dyad pairs represented here. Many of the actors are organizational accounts, and there is some interaction between organizations and individuals that are part of the organization. The actor <span class="citation" data-cites="NAFSA">@NAFSA</span>, which is the account of the main professional organization for IE, is at the center of a group that includes its President, <span class="citation" data-cites="EstherAtNAFSA">@EstherAtNAFSA</span>, and users who are members.</p>
+<p>This analysis used the measure <code>centrality_authority</code> which purports to measure how influential an individual may be based on the interactions observed. It identified the user <span class="citation" data-cites="eddiepwest">@eddiepwest</span> has having a large measure of centrality, or importance. However, it seems like this measure is not as useful in this context.</p>
 </section>
 <section id="discussion" class="slide level2">
 <h2>Discussion</h2>
@@ -756,9 +751,11 @@ document.getElementsByTagName('head')[0].appendChild(style);
 </section>
 <section id="final-thoughts" class="slide level2">
 <h2>Final Thoughts</h2>
-<p>The #intled network on Twitter is not as active as some other education related hashtags, but it does have a good amount of users who disseminate information regularly. Based on this analysis, the interactions between users surrounding this topic is sparse. If IE professionals would like to engage on this topic, it might be worth it to look into other mediums, such as the professional organizations’ various discussion forums, list-servs, Facebook, or Discord.</p>
+The #intled network on Twitter is not as active as some other education related hashtags, but it does have a good amount of users who disseminate information regularly. Based on this analysis, the interactions between users surrounding this topic is sparse. If IE professionals would like to engage on this topic, it might be worth it to look into other mediums, such as the professional organizations’ various discussion forums, list-servs, Facebook, or Discord.
+<center>
 <blockquote class="twitter-tweet" data-width="550" data-lang="en" data-dnt="true" data-theme="light"><p lang="en" dir="ltr">Thank you, <a href="https://twitter.com/NACEOrg?ref_src=twsrc%5Etfw">@NACEOrg</a> for the opportunity to share <a href="https://twitter.com/NAFSA?ref_src=twsrc%5Etfw">@NAFSA</a>’s policy priorities to advance the field of <a href="https://twitter.com/hashtag/intled?src=hash&amp;ref_src=twsrc%5Etfw">#intled</a>, including the need for a national strategy to rebuild the pipeline of <a href="https://twitter.com/hashtag/intlstudent?src=hash&amp;ref_src=twsrc%5Etfw">#intlstudent</a> talent that helps U.S. classrooms &amp; businesses thrive. <a href="https://twitter.com/hashtag/NACE21?src=hash&amp;ref_src=twsrc%5Etfw">#NACE21</a> <a href="https://t.co/7TPyOCxyxE">https://t.co/7TPyOCxyxE</a></p>— Esther D. Brimmer (@EstherAtNAFSA) <a href="https://twitter.com/EstherAtNAFSA/status/1403112514754318339?ref_src=twsrc%5Etfw">June 10, 2021</a></blockquote>
 
+</center>
 </section>
     </div>
   </div>
