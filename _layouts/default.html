@@ -6,14 +6,24 @@
 		<link rel="stylesheet" type="text/css" href="/css/main.css">
 	</head>
 	<body>
-		<nav>
-    		<ul>
-        		<li><a href="/">Home</a></li>
-	        	<li><a href="/about">About</a></li>
-        		<li><a href="/cv">CV</a></li>
-        		<li><a href="/blog">Blog</a></li>
-    		</ul>
-		</nav>
+		<div class= "navbar">
+        		<a href="/">Home</a>
+	        	<a href="/about">About</a>
+        		<a href="/cv">CV</a>
+        		<a href="/blog">Blog</a>
+			<div class="dropdown">
+				<button class="dropbtn"> Projects
+					<i class="fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </div>
+</div>
+    		
+		
 		<div class="container">
     		{{ content }}
 		</div><!-- /.container -->
