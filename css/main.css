@@ -49,6 +49,10 @@ ul.socialmedialist {
 ul.socialmedialist li {
     text-align: center;
     display: inline-block; 
-    margin: 0 10px; 
-    font-size 1.2em; 
+    margin: 0 10px;  
 }
+
+ul.socialmedialist li p {
+   font-size: 1.2em; 
+}
+
