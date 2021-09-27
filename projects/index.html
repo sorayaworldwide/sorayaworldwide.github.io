@@ -21,20 +21,21 @@ title: Portfolio, Learning Analytics and Beyond
 			</ul>
 			
 			<h2>Machine Learning</h2>
-			<h3><a href="https://github.com/sorayaworldwide/twitterclassification" target="_blank">Sentiment Classification of Twitter Sentiment: Covid-19, Vaccines, and Education</a></h3>
+			<h3><a href="https://github.com/sorayaworldwide/twitterclassification" target="_blank">Classification of Twitter Sentiment: Covid-19, Vaccines, and Education</a></h3>
 			<p>
 			This machine learning project sought to classify the sentiment of tweets based on textual characteristics of the data. The analysis was conducted in R using the <a href="https://www.tidymodels.org/" target="_blank">TidyModels framework</a> and multinomial regression. The project was heavily influenced by Emil Hvitfelt and Julia Silge's excellent resource <cite><a href="https://smltar.com/" target="_blank">Supervised Machine Learning for Text Analysis in R</cite></a>. 
 			</p>
 			<p>Below you will find several plots illustrating the findings of the classification project based on specific features.</p>
 			
 			<b>Sentiment plot: number of words versus characters per word</b>
-			<p> <img border="0" alt="ML Classification Number of Words versus Characters" src="https://sorayaworldwide.github.io/images/ML/facet wrap neg neutral positive.png" width="300" height="150"></a></p>
+			<p> <img border="0" alt="ML Classification Number of Words versus Characters" src="https://sorayaworldwide.github.io/images/ML/facet wrap neg neutral positive.png" width="300" height="150" onclick="enlargeImg()" 
+                 id="img1"></a></p>
 
 			<b>Parts of speech tags by sentiment</b>
 <p><img border="0" alt="Parts of speech tags by sentiment" src="https://sorayaworldwide.github.io/images/ML/POS tage by sentiment Rplot.png" width="300" height="150"></a></p>   
 
-<b>Confusion Matrix</b>
-<p><img border="0" alt="Confusion Matrix" src="https://sorayaworldwide.github.io/images/ML/Confusion Matrix Rplot.png" width="300" height="150"></a></p> 
+<b>Importance of unigram in classification</b>
+<p><img border="0" alt="Unigram plot" src="https://sorayaworldwide.github.io/images/ML/Rplot original.png" width="300" height="150"></a></p> 
 
 <h2>Dashboard Design</h2>
 
@@ -51,11 +52,27 @@ This simple <a href=" https://sorayaworldwide.shinyapps.io/ShinyOpenDoors/" targ
 </ul>
 
 <h2>LX Design</h2>
-<h3>Guidebook App for Global Education</h3>
+<h3><a href="Guidebook App for Global Education</h3>
 <h3>Global Education Pre-departure Training</h3>
 <h3>Rumie Initiative</h3>
 
 
+	
+	<script>
+            img = document.getElementById("img1");
+            // Function to set image dimensions
+            function enlargeImg() {
+                img.style.width = "60%";
+                img.style.height = "auto";
+                img.style.transition = "width 0.5s ease";
+            }
+            // Function to reset image dimensions
+            function resetImg() {
+                img.style.width = "40%";
+                img.style.height = "auto";
+                img.style.transition = "width 0.5s ease";
+            }
+        </script>
 
 			
 			
