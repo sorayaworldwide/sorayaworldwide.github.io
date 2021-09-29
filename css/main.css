@@ -56,3 +56,11 @@ ul.socialmedialist li p {
    font-size: 1.2em; 
 }
 
+img {
+    transition:transform 0.25s ease;
+}
+
+img:hover {
+    -webkit-transform:scale(1.5); /* or some other value */
+    transform:scale(1.5);
+}
