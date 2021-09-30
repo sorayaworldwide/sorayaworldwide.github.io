@@ -56,11 +56,12 @@ ul.socialmedialist li p {
    font-size: 1.2em; 
 }
 
-img {
+img.hoverZoom {
     transition:transform 0.25s ease;
+    border: 3px solid #555;
 }
 
-img:hover {
-    -webkit-transform:scale(2); /* or some other value */
-    transform:scale(2);
+img.hoverZoom:hover {
+    -webkit-transform:scale(4); /* or some other value */
+    transform:scale(4);
 }
