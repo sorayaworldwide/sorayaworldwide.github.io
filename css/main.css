@@ -61,6 +61,6 @@ img {
 }
 
 img:hover {
-    -webkit-transform:scale(3); /* or some other value */
-    transform:scale(3);
+    -webkit-transform:scale(2); /* or some other value */
+    transform:scale(2);
 }
