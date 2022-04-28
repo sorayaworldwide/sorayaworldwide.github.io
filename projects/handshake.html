@@ -1855,7 +1855,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 </section>
 <section id="data-source-and-quality" class="slide level2">
 <h2>Data source and quality</h2>
-<p>Data are derived tables <a href="https://nces.ed.gov/ipeds/resource/download/IPEDS_DataReleaseProcedures.pdf">from
+<p>Data are derived <a href="https://nces.ed.gov/ipeds/resource/download/IPEDS_DataReleaseProcedures.pdf">from
 IPEDS</a> with data dictionary</p>
 <ol type="1">
 <li>Ingest data by importing csv, xlsx files using
@@ -1865,24 +1865,21 @@ look at variables then <code>view</code> to take a quick glance at
 observations</li>
 <li>“schools_final” contains null values (“NA”) for UG and GRAD
 enrollment data; “ipeds_final” contains null values (“NA”) for variable
-GRRTTOT
+GBA6RTT
 <ul>
-<li><p>Some NAs due to school being either at UG/GRAD level</p></li>
-<li><p>Without values, need to calculate mean by removing NA
-observations from analysis</p></li>
+<li>Some NAs for enrollment due to school being either at UG/GRAD
+level</li>
+<li>22 NA’s for GBA6RTT due to institution not being represented in
+“ipeds_final” or listed as NA</li>
+<li>Calculate mean by removing NA observations from analysis</li>
 </ul></li>
 </ol>
 </section>
 <section id="data-source-and-quality-1" class="slide level2">
 <h2>Data source and quality</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(CAschoolavg<span class="sc">$</span>GRRTTOT)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(CAschoolavg<span class="sc">$</span>GBA6RTT)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
-##    0.00   54.25   64.00   65.27   78.50  100.00      21</code></pre>
-<p>Note that for institution 262086, Brandman University, the value of
-their graduation rate is 0, which throws off the mean. You can consider
-excluding this value, since upon inspection, the institution’s reported
-data is sparse. Since 0 was reported and not NA, I decided to include
-this observation in the calculation.</p>
+##   23.00   54.00   64.00   65.13   79.00  100.00      22</code></pre>
 </section>
 <section id="interpretation" class="slide level2">
 <h2>Interpretation</h2>
@@ -1898,7 +1895,7 @@ this observation in the calculation.</p>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>allschoolsdf <span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;ipeds_final.csv&quot;</span>)</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="do">##subset table to include only UNITID AND Grad-rate</span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>allschoolsdf2 <span class="ot">&lt;-</span> allschoolsdf<span class="sc">%&gt;%</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(UNITID, GRRTTOT)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(UNITID, GBA6RTT)</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="do">##inspect data</span></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(allschoolsdf2)</span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="do">##join tables on UNITID</span></span>
@@ -1908,19 +1905,19 @@ this observation in the calculation.</p>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(CAschoolavg)</span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="do">##convert grad rate to numeric to formally calculate average</span></span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>CAschoolavg2 <span class="ot">&lt;-</span>CAschoolavg <span class="sc">%&gt;%</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">GRRTTOT =</span> <span class="fu">as.numeric</span>(GRRTTOT))</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">GBA6RTT =</span> <span class="fu">as.numeric</span>(GBA6RTT))</span>
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="do">##check variable is numeric</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(CAschoolavg2<span class="sc">$</span>GRRTTOT)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(CAschoolavg2<span class="sc">$</span>GBA6RTT)</span>
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="do">##calculate average, ignore null</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(CAschoolavg2<span class="sc">$</span>GRRTTOT, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(CAschoolavg2<span class="sc">$</span>GBA6RTT, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 </section>
 <section id="interpretation-1" class="slide level2">
 <h2>Interpretation</h2>
 <p>Average percentage of full-time, first-time, bachelor’s degree
 seeking undergraduate students from the UC, CSU, and private non-profit
-schools within 150% of normal time: <strong>65.27</strong></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(CAschoolavg2<span class="sc">$</span>GRRTTOT, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## [1] 65.26531</code></pre>
+schools within 150% of normal time: <strong>65.13</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(CAschoolavg2<span class="sc">$</span>GBA6RTT, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 65.13402</code></pre>
 </section>
 <section id="future-research" class="slide level2">
 <h2>Future Research</h2>
